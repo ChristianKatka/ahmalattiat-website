@@ -1,0 +1,21 @@
+@use "../../styles.scss" as s;
+
+$color-primary-light: #565656;
+$color-primary-dark: #242424;
+
+main {
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.6),
+      rgba($color-primary-dark, 0.9)
+    ),
+    url("../../assets/background.jpg");
+  background-position: center;
+  background-size: cover;
+}
+
+.margin-top {
+  margin-top: 1rem;
+}

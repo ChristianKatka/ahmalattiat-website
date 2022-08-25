@@ -1,0 +1,45 @@
+@use "../../styles.scss" as s;
+
+@mixin coverer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video-header {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  &,
+  video,
+  .viewport-header {
+    @include coverer;
+  }
+  video {
+    object-fit: cover;
+  }
+  .viewport-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 60px;
+      color: s.$orange;
+      font-family: "Montserrat", sans-serif;
+    }
+  }
+}
+
+main {
+  background: white;
+  position: relative;
+  margin-top: 100vh;
+  &::before {
+    content: "";
+    @include coverer;
+    top: -100vh;
+  }
+}
