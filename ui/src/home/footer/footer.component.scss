@@ -1,0 +1,38 @@
+main {
+  background-color: #242424;
+}
+
+p {
+  color: #a8a8a8;
+}
+
+li {
+  color: #a8a8a8;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h2 {
+  color: #ffffff;
+}
+
+span {
+  color: #228dcb;
+}
+
+.divider {
+  height: 1px;
+  width: 30px;
+  background-color: #228dcb;
+  margin: 20px 0; /* Adjust spacing as needed */
+}
+
+mat-divider {
+  background-color: rgba(255, 255, 255, 0.1);
+  margin: 30px 0px;
+}
+
+.copyright {
+  color: #fff;
+  text-align: center;
+}
