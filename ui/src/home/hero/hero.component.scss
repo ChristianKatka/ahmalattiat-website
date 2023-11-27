@@ -1,5 +1,7 @@
+@use "../../styles/variables/" as *;
+
 span {
-  color: #228dcb;
+  color: var(--primary-color);
 }
 
 .text-center {
@@ -9,7 +11,7 @@ span {
 .divider {
   height: 2px;
   width: 80px;
-  background-color: #228dcb;
+  background-color: var(--primary-color);
   margin: 20px 0; /* Adjust spacing as needed */
 }
 
@@ -17,4 +19,15 @@ img {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.list {
+  margin-top: 2rem;
+  p {
+    margin: 0;
+    padding-left: 5px;
+  }
+  mat-icon {
+    color: var(--primary-color);
+  }
 }

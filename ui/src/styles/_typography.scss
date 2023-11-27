@@ -1,0 +1,79 @@
+@use "./breakpoints/" as *;
+
+:root {
+  // These apply when smaller than XS
+  --base-font-size: 18px;
+  --line-height: 20px;
+
+  @media ($mat-gt-xs) {
+    --base-font-size: 1.2rem;
+    --line-height: 1.2rem;
+  }
+  // @media ($mat-gt-sm) {
+  //   --base-font-size: 1.2rem;
+  //   --line-height: 1.2rem;
+  // }
+
+  // @media ($mat-gt-md) {
+  //   --base-font-size: 1.3rem;
+  //   --line-height: 1.3rem;
+  // }
+
+  // @media ($mat-gt-lg) {
+  //   --base-font-size: 1.4rem;
+  //   --line-height: 1.4rem;
+  // }
+
+  --scale: 1.04;
+
+  --h6: calc(var(--base-font-size) * var(--scale));
+  --h5: calc(var(--h6) * var(--scale));
+  --h4: calc(var(--h5) * var(--scale));
+  --h3: calc(var(--h4) * var(--scale));
+  --h2: calc(var(--h3) * var(--scale));
+  --h1: calc(var(--h2) * var(--scale));
+  --h1: calc(var(--h2) * var(--scale) * 1.5);
+
+  a {
+    font-size: var(--base-font-size);
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // mat-toolbar,
+  // mat-menu,
+  // mat-menu-item,
+  // mat-panel-title,
+  // mat-card,
+  // button {
+  //   font-size: calc(var(--base-font-size));
+  //   line-height: calc(var(--line-height));
+  //   font-family: "Oswald", sans-serif;
+  // }
+
+  p,
+  li {
+    font-size: calc(var(--base-font-size));
+    line-height: calc(var(--line-height));
+    font-family: "Roboto Condensed", sans-serif;
+  }
+
+  h2 {
+    font-size: calc(var(--h2));
+    line-height: calc(var(--h2));
+    font-family: "Oswald", sans-serif;
+  }
+
+  h1 {
+    font-size: calc(var(--h1));
+    line-height: calc(var(--h1));
+    font-family: "Oswald", sans-serif;
+  }
+}
+
+// fallback
+html {
+  font-size: 20px;
+}

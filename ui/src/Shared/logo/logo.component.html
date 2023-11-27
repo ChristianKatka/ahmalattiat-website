@@ -1,2 +1,7 @@
 <!-- <h1 routerLink="/">ahma</h1> -->
-<img src="assets/images/logo.png" />
+<img *ngIf="size === 's'" src="assets/images/logo.png" />
+<img
+  *ngIf="size === 'm'"
+  style="transform: scale(1.2)"
+  src="assets/images/logo.png"
+/>
