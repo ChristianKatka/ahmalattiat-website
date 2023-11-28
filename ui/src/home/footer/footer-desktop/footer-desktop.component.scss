@@ -1,0 +1,59 @@
+@use "../../../styles/variables/" as *;
+
+main {
+  background-color: var(--dark-gray);
+}
+
+section {
+  margin: 0px 20px;
+  padding-bottom: 20px;
+}
+
+h2 {
+  color: white;
+}
+
+.container1 {
+  flex: 2;
+  padding: 1rem;
+}
+.container2 {
+  flex: 1;
+  margin-top: 20px;
+  padding: 1rem;
+}
+.container3 {
+  flex: 1;
+  margin-top: 20px;
+  padding: 1rem;
+}
+.divider {
+  height: 1px;
+  width: 30px;
+  background-color: var(--primary-color);
+  margin: 20px 0;
+}
+
+p {
+  color: var(--light-gray);
+}
+
+.list {
+  p {
+    margin: 0;
+    padding-left: 5px;
+  }
+  mat-icon {
+    color: var(--light-gray);
+  }
+}
+
+mat-divider {
+  background-color: var(--gray);
+  margin: 30px 0px;
+}
+
+.copyright {
+  color: white;
+  text-align: center;
+}

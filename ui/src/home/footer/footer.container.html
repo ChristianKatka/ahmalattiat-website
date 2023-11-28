@@ -1,0 +1,7 @@
+<app-footer-mobile
+  *ngIf="windowWidthService.isMobileScreen$ | async"
+></app-footer-mobile>
+
+<app-footer-desktop
+  *ngIf="!(windowWidthService.isMobileScreen$ | async)"
+></app-footer-desktop>

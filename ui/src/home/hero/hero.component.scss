@@ -31,3 +31,10 @@ img {
     color: var(--primary-color);
   }
 }
+
+// Apply styles to all elements except the first child
+.parent {
+  > *:not(:first-child) {
+    padding-top: 10px;
+  }
+}
