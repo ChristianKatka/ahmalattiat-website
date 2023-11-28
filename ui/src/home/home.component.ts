@@ -2,14 +2,14 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FooterContainerComponent } from './footer/footer.container';
 import { HeroBannerComponent } from './hero-banner/hero-banner.component';
-import { HeroComponent } from './hero/hero.component';
+import { HeroContainerComponent } from './hero/hero.container';
 
 @Component({
   standalone: true,
   imports: [
     CommonModule,
     HeroBannerComponent,
-    HeroComponent,
+    HeroContainerComponent,
     FooterContainerComponent,
   ],
   selector: 'app-home',

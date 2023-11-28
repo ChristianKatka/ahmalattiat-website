@@ -1,4 +1,4 @@
-@use "../../styles/variables/" as *;
+@use "../../../styles/variables/" as *;
 
 span {
   color: var(--primary-color);
@@ -16,9 +16,14 @@ span {
 }
 
 img {
+  // width: 100%;
+  // height: auto;
+  // display: block;
   width: 100%;
-  height: auto;
-  display: block;
+  min-height: 200px;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center;
 }
 
 .list {
