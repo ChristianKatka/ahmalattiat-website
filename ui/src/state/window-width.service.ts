@@ -6,13 +6,13 @@ export class WindowWidthService {
   public isMobileScreen$ = new BehaviorSubject<boolean>(false);
 
   onResize(innerWidth: number): void {
-    const isMobileScreen = innerWidth < 960;
+    const isMobileScreen = innerWidth < 1010;
 
     this.isMobileScreen$.next(isMobileScreen);
   }
 
   serviceOnInit(innerWidth: number): void {
-    const isMobileScreen = innerWidth < 960;
+    const isMobileScreen = innerWidth < 1010;
 
     this.isMobileScreen$.next(isMobileScreen);
   }
