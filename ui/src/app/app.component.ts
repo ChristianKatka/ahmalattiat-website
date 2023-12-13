@@ -1,23 +1,31 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { NavbarComponent } from '../Shared/navbar/navbar.component';
-import { WindowWidthService } from '../state/window-width.service';
+import { UiActions } from '../Store/actions';
+import { AppState } from '../Store/reducers';
+import { StateModule } from '../Store/store.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, RouterOutlet],
+  imports: [CommonModule, NavbarComponent, RouterOutlet, StateModule],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.windowWidthService.onResize(window.innerWidth);
+    this.store.dispatch(
+      UiActions.onWindowResize({ innerWidth: window.innerWidth })
+    );
   }
-  constructor(private windowWidthService: WindowWidthService) {}
+
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.windowWidthService.serviceOnInit(window.innerWidth);
+    this.store.dispatch(
+      UiActions.onWindowResize({ innerWidth: window.innerWidth })
+    );
   }
 }
