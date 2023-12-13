@@ -1,31 +1,24 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { NavbarComponent } from '../Shared/navbar/navbar.component';
-import { UiActions } from '../Store/actions';
-import { AppState } from '../Store/reducers';
-import { StateModule } from '../Store/store.module';
+import { UiFacade } from '../Store/facades/ui.facade';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, RouterOutlet, StateModule],
+  imports: [CommonModule, NavbarComponent, RouterOutlet],
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
   @HostListener('window:resize', ['$event'])
   onResize(): void {
-    this.store.dispatch(
-      UiActions.onWindowResize({ innerWidth: window.innerWidth })
-    );
+    this.uiFacade.onWindowResize(window.innerWidth);
   }
 
-  constructor(private store: Store<AppState>) {}
+  private readonly uiFacade = inject(UiFacade);
 
   ngOnInit(): void {
-    this.store.dispatch(
-      UiActions.onWindowResize({ innerWidth: window.innerWidth })
-    );
+    this.uiFacade.onWindowResize(window.innerWidth);
   }
 }
