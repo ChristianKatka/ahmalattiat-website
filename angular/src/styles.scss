@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1, h2, h3, h4, p, span {
+  font-family: "Montserrat", sans-serif !important;
+  /* Add !important to overwrite all elements */
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+:root {
+  --white: rgb(255, 255, 255);
+  --d-white: rgb(233, 233, 233);
+  --orange: #ff6200;
+}
+
+@layer components {
+  .textff {
+    @apply p-2 m-2 left-14 rounded-md shadow-md
+    text-white bg-gray-900 
+    text-xs font-bold;
+  }
+}
+
+$orange: #ff6200;

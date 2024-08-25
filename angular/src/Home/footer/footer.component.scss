@@ -1,0 +1,14 @@
+@use "../../styles.scss" as s;
+
+mat-divider {
+  border-top-color: s.$orange;
+}
+
+section {
+  background: linear-gradient(
+    180deg,
+    rgb(40, 40, 40) 0%,
+    rgb(25, 25, 25) 35%,
+    rgb(10, 10, 10) 100%
+  );
+}

@@ -1,0 +1,24 @@
+@use "../../../styles.scss" as s;
+
+
+main {
+  height: 200px;
+  width: 100%;
+  // background: rgb(233, 115, 0);
+  background: linear-gradient(
+    163deg,
+    rgb(80, 80, 80) 0%,
+    rgb(61, 60, 60) 35%,
+    rgb(40, 40, 40) 100%
+  );
+  h1 {
+    color: s.$orange;
+    letter-spacing: 3px;
+  }
+  button {
+    margin-top: 15px;
+    width: 250px;
+    color: s.$orange;
+    border-radius: 40px;
+  }
+}

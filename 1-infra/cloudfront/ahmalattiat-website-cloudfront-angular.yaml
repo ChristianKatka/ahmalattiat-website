@@ -1,0 +1,67 @@
+
+---
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Template for creating Cloudfront distribution from S3 with origin access identity and DNS records
+
+
+Resources:
+  CloudfrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        HttpVersion: 'http2'
+        Origins:
+          - Id: !Join
+                - ""
+                - - "id-"
+                  - Fn::ImportValue: "ahmalattiat-website-angular-bucket-domain-name"
+            DomainName: !Join
+              - ''
+              - - Fn::ImportValue: 'ahmalattiat-website-angular-bucket-name'
+                - !Sub '.s3-${AWS::Region}.amazonaws.com'
+            S3OriginConfig:
+              OriginAccessIdentity: !Join
+                - ""
+                - - "origin-access-identity/cloudfront/"
+                  - Fn::ImportValue: "ahmalattiat-website-s3-bucket-angular-cloudfront-oai"
+        Enabled: 'true'
+        DefaultRootObject: index.html
+        CustomErrorResponses:
+          - ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+        DefaultCacheBehavior:
+          CachedMethods:
+            - GET
+            - HEAD
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+            - PUT
+            - PATCH
+            - POST
+            - DELETE
+          Compress: true
+          DefaultTTL: 86400
+          MaxTTL: 604800
+          # CloudFront to route requests to when they use the default cache behavior.
+          TargetOriginId: !Join
+                - ""
+                - - "id-"
+                  - Fn::ImportValue: "ahmalattiat-website-angular-bucket-domain-name"
+
+          ForwardedValues:
+            QueryString: 'false'
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        PriceClass: PriceClass_100
+
+
+
+
+
+
+
+

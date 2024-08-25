@@ -1,0 +1,56 @@
+@use "../../../styles/variables/" as *;
+
+main {
+  margin-top: 95px;
+  margin-bottom: 60px;
+}
+section {
+  margin: 0px 90px;
+  padding-bottom: 20px;
+}
+
+span {
+  color: var(--primary-color);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.divider {
+  height: 2px;
+  width: 80px;
+  background-color: var(--primary-color);
+  margin: 20px 0; /* Adjust spacing as needed */
+}
+
+img {
+  // width: 100%;
+  // height: auto;
+  // display: block;
+  width: 100%;
+  min-height: 200px;
+  max-height: 400px;
+  object-fit: cover;
+  object-position: center;
+  margin-top: 60px;
+  margin-left: 60px;
+}
+
+.list {
+  margin-top: 1rem;
+  p {
+    margin: 0;
+    padding-left: 5px;
+  }
+  mat-icon {
+    color: var(--primary-color);
+  }
+}
+
+// Apply styles to all elements except the first child
+.parent {
+  > *:not(:first-child) {
+    padding-top: 10px;
+  }
+}

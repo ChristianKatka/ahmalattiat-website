@@ -1,0 +1,41 @@
+@use "../../../styles/variables/" as *;
+
+.text-center {
+  text-align: center;
+}
+
+span {
+  color: var(--primary-color);
+}
+
+.divider {
+  height: 2px;
+  width: 80px;
+  background-color: var(--primary-color);
+  margin: 20px 0;
+}
+
+img {
+  margin-top: 60px;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+mat-icon {
+  color: var(--primary-color);
+}
+
+.parent {
+  margin-top: 2rem;
+
+  p {
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  // Apply styles to all elements except the first child
+  > *:not(:first-child) {
+    padding-top: 10px;
+  }
+}
