@@ -8,7 +8,9 @@ import { Footer } from "./home/8footer/Footer";
 import { Background } from "./home/background/Background";
 import { Employees } from "./home/employees/Employees";
 import { HeroSection } from "./home/full-screen-image/FullScreenImage";
+import { Osoite } from "./home/osoite/Osoite";
 import { OurWork } from "./home/our-work/OurWork";
+import { PetoLattia } from "./home/peto-lattia/PetoLattia";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Employees></Employees>
         <Technologies></Technologies>
         <OurWork></OurWork>
+        <Osoite></Osoite>
+        <PetoLattia></PetoLattia>
         <Footer></Footer>
       </Background>
     </>

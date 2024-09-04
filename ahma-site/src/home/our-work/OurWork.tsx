@@ -1,43 +1,48 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import parquet2 from "../../assets/background.jpg";
-import parquet from "../../assets/parquet.jpg";
-import pesu1 from "../../assets/pesuhuone/4.jpg";
-import pesu2 from "../../assets/pesuhuone/5.jpg";
-import pesu3 from "../../assets/pesuhuone/6.jpg";
+import parquet from "../../assets/parketti/IMG_0486.webp";
+import parquet2 from "../../assets/parketti/IMG_0524.webp";
+import pesu1 from "../../assets/pesuhuone/pesu1-r.webp";
+import pesu2 from "../../assets/pesuhuone/pesu2-r.webp";
+import sauna1 from "../../assets/pesuhuone/sauna1-r.webp";
+import sauna2 from "../../assets/pesuhuone/sauna2-r.webp";
+import sauna3 from "../../assets/pesuhuone/sauna3-r.webp";
+import kylpy1 from "../../assets/pesuhuone/saunakylpy1-r.webp";
+import kylpy2 from "../../assets/pesuhuone/saunakylpy2-r.webp";
+import vessa from "../../assets/pesuhuone/vessa-r.webp";
 
 const workItems = [
   {
     id: 1,
-    title: "Pesuhuone",
-    description: "sauna sekä pesu tilat ja vessa.",
-    imageUrls: [pesu1, pesu2, pesu3],
+    title: "Parketti",
+    description: "Parketti lakkaus vaiheessa ja sen jälkeen.",
+    imageUrls: [parquet, parquet2],
   },
   {
     id: 2,
-    title: "Project Two",
+    title: "Pesuhuone",
     description: "Description of project two.",
-    imageUrls: [parquet, parquet2],
+    imageUrls: [pesu1, pesu2],
   },
   {
     id: 3,
-    title: "Project Three",
+    title: "Sauna remontti",
     description: "Description of project three.",
-    imageUrls: [parquet, parquet2],
+    imageUrls: [sauna1, sauna2, sauna3],
   },
 
   {
     id: 4,
-    title: "Project Three",
+    title: "Kylpyhuone",
     description: "Description of project three.",
-    imageUrls: [parquet, parquet2],
+    imageUrls: [kylpy1, kylpy2],
   },
   {
     id: 5,
-    title: "Project Three",
+    title: "Vessa",
     description: "Description of project three.",
-    imageUrls: [parquet, parquet2],
+    imageUrls: [vessa, vessa],
   },
 ];
 

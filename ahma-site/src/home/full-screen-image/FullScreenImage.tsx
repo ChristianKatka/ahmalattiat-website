@@ -1,11 +1,11 @@
-import backgroundImage from "../../assets/background.jpg";
-import Navbar from "../1navbar/Navbar";
+// import backgroundImage from "../../assets/background.jpg";
+// import Navbar from "../1navbar/Navbar";
 
 export const HeroSection = () => {
   return (
     <section
       className="relative h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      // style={{ backgroundImage: `url(${backgroundImage})` }}
     >
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-80"></div>
