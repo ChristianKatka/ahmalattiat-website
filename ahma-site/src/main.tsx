@@ -6,6 +6,8 @@ import App from "./App.tsx";
 import "./index.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { TTTtest } from "./home/test/Test.tsx";
+import Test2 from "./home/test2/Test2.tsx";
 
 AOS.init({
   duration: 1000, // Animation duration in milliseconds
@@ -16,6 +18,8 @@ AOS.init({
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
+    {/* <Test2></Test2>
+    <TTTtest></TTTtest> */}
     <App />
   </StrictMode>
 );

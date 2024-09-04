@@ -1,30 +1,8 @@
-// src/technologies/Technologies.tsx
 import React from "react";
-import { motion } from "framer-motion";
-
-// List of technology images and their names
-const techItems = [
-  {
-    name: "React",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/react.svg",
-  },
-  {
-    name: "Node.js",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/node-dot-js.svg",
-  },
-  {
-    name: "AWS",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/amazonaws.svg",
-  },
-  {
-    name: "Angular",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/angular.svg",
-  },
-  {
-    name: "TypeScript",
-    src: "https://cdn.jsdelivr.net/npm/simple-icons@v6/icons/typescript.svg",
-  },
-];
+import tarkett from "../../assets/kumppanit/tarkett-logo.svg";
+import rtv from "../../assets/kumppanit/rtv.png";
+import kRauta from "../../assets/kumppanit/k-rauta.svg";
+import ahlsell from "../../assets/kumppanit/ahlsell.svg";
 
 export const Technologies: React.FC = () => {
   return (
@@ -38,8 +16,35 @@ export const Technologies: React.FC = () => {
       </div>
 
       {/* Technology Icons */}
-      <div className="flex flex-wrap justify-center gap-8 px-6 text-white">
-        <p>TÄHÄN YHTEISTYÖ KUMPPANIT</p>
+      <div className="flex flex-wrap flex-col items-center gap-16 px-6 text-white">
+        <img
+          src="https://cdnmedia.mapei.com/images/librariesprovider41/logos/logo-header-finland.png?sfvrsn=15e9a7a_2"
+          className="w-full max-w-60 md:max-w-sm h-auto"
+          alt="mapei"
+        />
+        <img
+          src={tarkett}
+          className="w-full max-w-60 md:max-w-sm h-auto"
+          alt="tarkett"
+        />
+
+        <img
+          src={kRauta}
+          className="w-full max-w-60 md:max-w-sm h-auto"
+          alt="k-rauta"
+        />
+
+        <img
+          src={ahlsell}
+          className="w-full max-w-60 md:max-w-sm h-auto"
+          alt="ahlsell"
+        />
+
+        <img
+          src={rtv}
+          className="w-full max-w-32 md:max-w-44 h-auto"
+          alt="rtv"
+        />
       </div>
     </section>
   );
