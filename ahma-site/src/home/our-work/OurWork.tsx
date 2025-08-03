@@ -55,7 +55,7 @@ export const OurWork = () => {
     slidesToShow: 1, // Number of slides to show at once
     slidesToScroll: 1, // Number of slides to scroll
     autoplay: true, // Enable autoplay
-    autoplaySpeed: 3000, // Time between slides
+    autoplaySpeed: 8000, // Time between slides
     arrows: true, // Show navigation arrows
   };
 
