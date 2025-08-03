@@ -1,12 +1,11 @@
 import React from "react";
-import tarkett from "../../assets/kumppanit/tarkett-logo.svg";
-import rtv from "../../assets/kumppanit/rtv.png";
-import kRauta from "../../assets/kumppanit/k-rauta.svg";
 import ahlsell from "../../assets/kumppanit/ahlsell.svg";
+import kRauta from "../../assets/kumppanit/k-rauta.svg";
+import tarkett from "../../assets/kumppanit/tarkett-logo.svg";
 
 export const Technologies: React.FC = () => {
   return (
-    <section className="py-12 px-6 text-center md:pb-96">
+    <section className="py-12 px-6 text-center md:pb-72">
       {/* Divider Text */}
       <div className="mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -18,7 +17,7 @@ export const Technologies: React.FC = () => {
       {/* Technology Icons */}
       <div className="flex flex-wrap flex-col items-center gap-16 px-6 text-white">
         <img
-          src="https://cdnmedia.mapei.com/images/librariesprovider41/logos/logo-header-finland.png?sfvrsn=15e9a7a_2"
+          src="images/mapei.png"
           className="w-full max-w-60 md:max-w-sm h-auto"
           alt="mapei"
         />
@@ -41,8 +40,8 @@ export const Technologies: React.FC = () => {
         />
 
         <img
-          src={rtv}
-          className="w-full max-w-32 md:max-w-44 h-auto"
+          src="images/maalari-mestarit.svg"
+          className="w-full max-w-60 md:max-w-sm h-auto"
           alt="rtv"
         />
       </div>

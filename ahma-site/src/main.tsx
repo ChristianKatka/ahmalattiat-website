@@ -18,7 +18,7 @@ AOS.init({
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    {/* <Test2></Test2>
+    {/* TOSI SIISTIT, mut ei ehk käytetä kuitenkaa <Test2></Test2>
     <TTTtest></TTTtest> */}
     <App />
   </StrictMode>

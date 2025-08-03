@@ -1,7 +1,6 @@
 export const Intro = () => {
   return (
-    <section className="flex flex-col md:flex-row items-start justify-between px-6 py-12 custom-responsive md:pb-96">
-      {" "}
+    <section className="flex flex-col mt-48 md:flex-row items-start justify-between px-6 py-12 custom-responsive md:pb-72">
       {/* Left Side */}
       <div
         data-aos="fade-right"
@@ -26,7 +25,7 @@ export const Intro = () => {
       {/* Right Side */}
       <div data-aos="fade-left" className="flex-1 mt-8 md:mt-0">
         <img
-          src="https://picsum.photos/400/400"
+          src="/images/janne.png"
           alt="Placeholder"
           className="w-full max-w-md h-auto rounded shadow-lg"
         />

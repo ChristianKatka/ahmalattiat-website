@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="flex items-center mb-3">
         <PhoneIcon className="h-6 w-6 mr-2"></PhoneIcon>
         <p>
-          <a href="tel:045 139 3535">045 139 3535</a>
+          <a href="tel:0509110686">050 911 0686</a>
         </p>
       </div>
       <div className="flex items-center mb-3">

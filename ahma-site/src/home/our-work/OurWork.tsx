@@ -60,7 +60,7 @@ export const OurWork = () => {
   };
 
   return (
-    <section className="py-12 px-6">
+    <section className="py-12 px-6 md:pb-72">
       <div className="container mx-auto text-center">
         {/* Section Header */}
         <div data-aos="fade-up" className="mb-16">
