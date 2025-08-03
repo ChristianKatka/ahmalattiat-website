@@ -10,7 +10,7 @@ const employees = [
   {
     id: 2,
     name: "Jaakko Ahtikari",
-    title: "Lattia Pinnoittaja",
+    title: "Lattiapinnoittaja",
     imageUrl: "/images/jaakko.png",
     email: "jaakko.ahtikari@gmail.com",
     phone: "+358458927474",

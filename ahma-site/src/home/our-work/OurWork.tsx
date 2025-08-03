@@ -16,32 +16,32 @@ const workItems = [
   {
     id: 1,
     title: "Parketti",
-    description: "Parketti lakkaus vaiheessa ja sen jälkeen.",
+    description: "Parkettilakkaus vaiheessa ja valmiina.",
     imageUrls: [parquet, parquet2],
   },
   {
     id: 2,
     title: "Pesuhuone",
-    description: "Description of project two.",
+    description: "Märkätilan matotus.",
     imageUrls: [pesu1, pesu2],
   },
   {
     id: 3,
     title: "Sauna remontti",
-    description: "Description of project three.",
+    description: "Sauna remontointi, hiertoepoksointi.",
     imageUrls: [sauna1, sauna2, sauna3],
   },
 
   {
     id: 4,
     title: "Kylpyhuone",
-    description: "Description of project three.",
+    description: "Kylpyhuone seinä- ja lattialaatoitus",
     imageUrls: [kylpy1, kylpy2],
   },
   {
     id: 5,
     title: "Vessa",
-    description: "Description of project three.",
+    description: "WC-tilan remontointi.",
     imageUrls: [vessa, vessa],
   },
 ];

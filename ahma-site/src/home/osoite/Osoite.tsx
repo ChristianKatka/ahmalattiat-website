@@ -1,8 +1,8 @@
 export const Osoite = () => {
   return (
-    <section id="address" className="py-16 px-6 custom-responsive md:pb-72">
+    <section id="address" className=" px-6 custom-responsive">
       {/* Divider Text */}
-      <div data-aos="fade-up" className="text-center mb-16">
+      <div data-aos="fade-up" className="text-center">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Osoite
         </h2>
@@ -33,7 +33,7 @@ export const Osoite = () => {
           className="flex-1 mt-8 md:mt-0 text-start text-gray-300 md:pr-4"
         >
           <p className="text-lg leading-relaxed text-center md:text-start">
-            Klikkaa kartta kuvaa avataaksesi reitti tiedot
+            Klikkaa karttaa löytääkseksi toimistollemme
           </p>
 
           <p className="text-lg leading-relaxed mt-6 text-center md:text-start">

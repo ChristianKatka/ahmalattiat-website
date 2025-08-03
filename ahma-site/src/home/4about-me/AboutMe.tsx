@@ -26,16 +26,21 @@ export const AboutMe = () => {
           className="flex-1 mt-8 md:mt-0 text-start text-gray-300 md:pr-4"
         >
           <p className="text-lg leading-relaxed text-center md:text-start">
-            Mattotyöt ja parkettityöt, kosteusvaurio korjaukset, haitallisten
-            päästöjen kapseloinnit, lattioiden halkeamien korjaukset, oikomiset,
-            tasoitukset ja kaatojen teot. Mattotyöt ja parkettityöt kosteisiin
-            tiloihin, autotalleihin, varastoihin ja käytäviin. Palvelemme sekä
-            yksityisiä että yrityksiä ja julkisia kohteita.
+            Olemme lattianpäällystyksen ja pienremontoinnin ammattilaisia.
+            Tarjoamme korkealaatuisia lattian pinnoitusratkaisuja sekä uusiin
+            että saneerattaviin tiloihin olipa kyseessä koti, liiketila tai
+            julkinen kohde me olemme oikea valinta! Erikoisalaamme ovat:
           </p>
-
-          <p className="text-lg leading-relaxed mt-6 text-center md:text-start">
-            <strong>Sivutoimialamme:</strong> Pienremontit – Sauna- ja
-            pesuhuoneremontit
+          <p className="mt-4">• Ongelmalattioiden asennus</p>
+          <p>• Lattian saneeraus</p>
+          <p>• Jalkalistojen ja muiden viimeistelyjen toteutus</p>
+          <p>• Pienet sisäremontit</p>
+          <p className="mb-4">• Lattioiden injektoinnit</p>
+          <p>
+            Palvelemme sekä yksityisasiakkaita että julkista sektoria, ja otamme
+            hoitaaksemme niin pienet kuin suuret projektit ammattitaidolla ja
+            luotettavasti. Ota yhteyttä – tehdään lattiastasi toimiva, kestävä
+            ja tyylikäs!
           </p>
         </div>
       </div>

@@ -17,7 +17,7 @@ export const Hero = () => {
           Ahmalattiat Oy
         </h1>
         <h3 className="text-lg md:text-2xl text-white mb-6 mt-10 text-bo">
-          Olemme Lattian pinnoituksiin erikoistunut asennus ja myynti liike
+          Olemme lattian pinnoituksiin erikoistunut asennus- ja myyntiliike
           Jyväskylän Keljossa. Kauttamme saat korkealaatuiset materiaalit
           asennuksineen alusta loppuun.
         </h3>
