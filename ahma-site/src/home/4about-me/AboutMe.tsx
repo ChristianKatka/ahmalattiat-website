@@ -25,7 +25,7 @@ export const AboutMe = () => {
           data-aos="fade-left"
           className="flex-1 mt-8 md:mt-0 text-start text-gray-300 md:pr-4"
         >
-          <p className="text-lg leading-relaxed text-center md:text-start">
+          <p className="text-lg leading-relaxed md:text-start">
             Olemme lattianpäällystyksen ja pienremontoinnin ammattilaisia.
             Tarjoamme korkealaatuisia lattian pinnoitusratkaisuja sekä uusiin
             että saneerattaviin tiloihin olipa kyseessä koti, liiketila tai
