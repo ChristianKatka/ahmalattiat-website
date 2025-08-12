@@ -6,8 +6,9 @@ const Navbar = () => {
     <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white z-50 shadow-md">
       <div className="container mx-auto flex justify-between items-center px-6">
         {/* Left Side: Logo */}
-        <img src={logo} alt="Logo" className="h-20 w-auto" />
-
+        <a href="#home">
+          <img src={logo} alt="Logo" className="h-20 w-auto cursor-pointer" />
+        </a>
         {/* Right Side: Social Media Icons */}
         <div className="flex space-x-4">
           <a href="#home" className="hover:text-orange-500">

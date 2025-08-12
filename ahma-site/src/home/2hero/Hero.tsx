@@ -1,7 +1,6 @@
 export const Hero = () => {
   return (
     <section
-      id="home"
       className=" relative flex flex-col justify-start items-center text-center min-h-screen px-4 pt-24
                  bg-[url('/images/hero-bg.JPG')] bg-cover bg-center bg-no-repeat"
     >

@@ -21,7 +21,7 @@ export const Employees = () => {
   return (
     <section
       id="employees"
-      className="py-12 px-6 text-center custom-responsive md:pb-72"
+      className="py-12 px-6 scroll-mt-20 text-center custom-responsive md:pb-72"
     >
       {/* Divider Text */}
       <div data-aos="fade-down" className="mb-16">

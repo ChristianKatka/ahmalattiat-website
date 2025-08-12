@@ -15,6 +15,9 @@ function App() {
   return (
     <>
       <Background>
+        <div id="home" style={{ height: "80px" }}>
+          <span>i am hidden</span>
+        </div>
         <Navbar></Navbar>
         <Hero></Hero>
         <Intro></Intro>
