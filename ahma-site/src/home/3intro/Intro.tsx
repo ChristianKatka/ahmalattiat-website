@@ -25,7 +25,7 @@ export const Intro = () => {
       {/* Right Side */}
       <div data-aos="fade-left" className="flex-1 mt-8 md:mt-0">
         <img
-          src="/images/janne.png"
+          src="/images/janne.JPG"
           alt="Placeholder"
           className="w-full max-w-md h-auto rounded shadow-lg"
         />
