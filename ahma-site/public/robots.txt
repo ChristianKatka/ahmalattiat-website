@@ -1,0 +1,5 @@
+# robots.txt for ahmalattiat.fi
+User-agent: *
+Allow: /
+
+Sitemap: https://ahmalattiat.fi/sitemap.xml
