@@ -1,0 +1,32 @@
+set-mailbox PF-Hierarchy -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Labra -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Mittarointitilaukset -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Sahkokauppa -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Verkko_Tiedonvaihto -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Myyntisopimukset -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Hankinta -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-JELaskutus -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Rakentamisvahvistukset -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Perinta -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Myynti_Tiedonvaihto -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Henkilosto -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Mittaushallinta -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Liittymispalvelu -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Rakennuttaminen -publicfolder -IsExcludedFromServingHierarchy $False
+set-mailbox PF-Asiakaspalvelu -publicfolder -IsExcludedFromServingHierarchy $False
+
+
+
+new-publicfoldermigrationrequest -Sourcedatabase (Get-Publicfolderdatabase -Server jeexc.jenet1.jenergia.fi) -CSVData (Get-Content pfmaptomailbox.csv -Encoding Byte)
+
+set-publicfoldermigrationrequest \publicfoldermigration -PreventCompletion $False
+resume-publicfoldermigrationrequest \publicfoldermigration¨¨
+
+set-mailbox pf-hierarchy -publicfolder -IsExcludedFromServingHierarchy $false
+
+
+
+
+
+
+

@@ -18,8 +18,9 @@ export const Intro = () => {
           alusta loppuun.
         </p>
         <p className="text-lg text-gray-300 mt-4">
-          Olemme lattian pinnoituksiin (matto, parketti, epoksointi)
-          erikoistunut asennus- ja myyntiliike Jyväskylän Keljossa.
+          Olemme lattian pinnoituksiin (matto, parketti, vinyyli ja muut lattian
+          pinnoitus materiaalit) erikoistunut asennus- ja myyntiliike Jyväskylän
+          Keljossa.
         </p>
       </div>
       {/* Right Side */}

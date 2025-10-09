@@ -13,7 +13,7 @@ const employees = [
     title: "Lattiapinnoittaja",
     imageUrl: "/images/jaakko.JPG",
     email: "jaakko.ahtikari@gmail.com",
-    phone: "+358458927474",
+    phone: "",
   },
 ];
 
