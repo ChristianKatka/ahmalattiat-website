@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
 
-    <link rel="canonical" href="https://www.ahmalattiat.fi" />
+    <link rel="canonical" href="https://ahmalattiat.fi" />
     <!-- Set the browser toolbar / notch color -->
     <meta name="theme-color" content="#111827" />
     <!-- iOS specific: enable web app style -->
@@ -34,7 +34,7 @@
     />
     <meta
       property="og:image"
-      content="https://www.ahmalattiat.fi/images/logo.png"
+      content="https://ahmalattiat.fi/images/logo.png"
     />
     <meta
       property="og:image:alt"
@@ -42,7 +42,10 @@
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:url" content="https://www.ahmalattiat.fi" />
+    <meta property="og:url" content="https://ahmalattiat.fi" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fi_FI" />
+    <meta property="og:site_name" content="Ahmalattiat Oy" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -55,8 +58,29 @@
     />
     <meta
       name="twitter:image"
-      content="https://www.ahmalattiat.fi/images/logo.png"
+      content="https://ahmalattiat.fi/images/logo.png"
     />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Ahmalattiat Oy",
+        "image": "https://ahmalattiat.fi/images/logo.png",
+        "url": "https://ahmalattiat.fi",
+        "telephone": "+358509110686",
+        "email": "janne.katka@ahmalattiat.fi",
+        "taxID": "2185717-7",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Sysmäläntie 1 Halli 34",
+          "addressLocality": "Jyväskylä",
+          "postalCode": "40530",
+          "addressCountry": "FI"
+        },
+        "areaServed": "Jyväskylä"
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
