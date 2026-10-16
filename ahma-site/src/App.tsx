@@ -13,23 +13,20 @@ import { PetoLattia } from "./home/peto-lattia/PetoLattia";
 
 function App() {
   return (
-    <>
-      <Background>
-        <div id="home" style={{ height: "80px" }}>
-          <span>i am hidden</span>
-        </div>
-        <Navbar></Navbar>
-        <Hero></Hero>
-        <Intro></Intro>
-        <AboutMe></AboutMe>
-        <Employees></Employees>
-        <Technologies></Technologies>
-        <OurWork></OurWork>
-        <Osoite></Osoite>
-        <PetoLattia></PetoLattia>
-        <Footer></Footer>
-      </Background>
-    </>
+    <Background>
+      <Navbar />
+      <main id="main-content" tabIndex={-1}>
+        <Hero />
+        <Intro />
+        <AboutMe />
+        <Employees />
+        <Technologies />
+        <OurWork />
+        <Osoite />
+        <PetoLattia />
+      </main>
+      <Footer />
+    </Background>
   );
 }
 
