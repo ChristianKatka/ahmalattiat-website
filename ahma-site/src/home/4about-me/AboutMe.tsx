@@ -14,6 +14,31 @@ const staggerItem = {
   },
 };
 
+const services = [
+  "Ongelmalattioiden asennus",
+  "Lattian saneeraus",
+  "Jalkalistojen ja muiden viimeistelyjen toteutus",
+  "Pienet sisäremontit",
+  "Lattioiden injektoinnit",
+];
+
+const CheckIcon = () => (
+  <svg
+    viewBox="0 0 20 20"
+    fill="none"
+    className="w-5 h-5 flex-shrink-0 text-orange-300"
+    aria-hidden="true"
+  >
+    <path
+      d="M4 10.5l4 4 8-9"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
 export const AboutMe = () => {
   return (
     <section className="py-16 px-6 custom-responsive md:pb-72">
@@ -71,17 +96,14 @@ export const AboutMe = () => {
             että saneerattaviin tiloihin olipa kyseessä koti, liiketila tai
             julkinen kohde me olemme oikea valinta! Erikoisalaamme ovat:
           </motion.p>
-          <motion.p variants={staggerItem} className="mt-4">
-            • Ongelmalattioiden asennus
-          </motion.p>
-          <motion.p variants={staggerItem}>• Lattian saneeraus</motion.p>
-          <motion.p variants={staggerItem}>
-            • Jalkalistojen ja muiden viimeistelyjen toteutus
-          </motion.p>
-          <motion.p variants={staggerItem}>• Pienet sisäremontit</motion.p>
-          <motion.p variants={staggerItem} className="mb-4">
-            • Lattioiden injektoinnit
-          </motion.p>
+          <motion.ul variants={staggerItem} className="mt-6 mb-4 space-y-3">
+            {services.map((service) => (
+              <li key={service} className="flex items-start gap-3">
+                <CheckIcon />
+                <span>{service}</span>
+              </li>
+            ))}
+          </motion.ul>
           <motion.p variants={staggerItem}>
             Palvelemme sekä yksityisasiakkaita että julkista sektoria, ja
             otamme hoitaaksemme niin pienet kuin suuret projektit
