@@ -8,7 +8,7 @@ const Navbar = () => {
   const links = [
     { href: "#home", label: "Etusivu" },
     { href: "#tyot", label: "Työt" },
-    { href: "#employees", label: "Yhteystiedot" },
+    { href: "#employees", label: "Työntekijät" },
     { href: "#address", label: "Sijainti" },
   ];
 
@@ -33,7 +33,7 @@ const Navbar = () => {
           ))}
         </nav>
         <div className="header-actions">
-          <a className="header-phone" href="tel:+358509110686" aria-label="Soita Jannelle, 050 911 0686">
+          <a className="header-phone" href="tel:+358509110686" aria-label="Soita, 050 911 0686">
             <PhoneIcon aria-hidden="true" />
             <span className="phone-number">050 911 0686</span>
             <span className="phone-label">Soita</span>

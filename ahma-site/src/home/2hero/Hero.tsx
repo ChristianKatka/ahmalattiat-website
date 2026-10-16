@@ -25,12 +25,12 @@ export const Hero = () => {
           <div className="hero-actions">
             <a className="hero-button hero-button-primary" href="tel:+358509110686">
               <PhoneIcon aria-hidden="true" />
-              Soita Jannelle
+              Soita
             </a>
             <a
               className="hero-button hero-button-secondary"
               href="mailto:janne.katka@ahmalattiat.fi"
-              aria-label="Lähetä sähköpostia Jannelle"
+              aria-label="Lähetä sähköpostia"
             >
               <EnvelopeIcon aria-hidden="true" />
               Sähköposti

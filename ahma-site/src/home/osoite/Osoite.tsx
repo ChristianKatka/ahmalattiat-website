@@ -1,44 +1,43 @@
+import { CursorArrowRaysIcon, MapPinIcon } from "@heroicons/react/24/outline";
+
 export const Osoite = () => {
   return (
-    <section id="address" className="scroll-mt-20 px-6 custom-responsive">
+    <section
+      id="address"
+      className="py-16 px-6 scroll-mt-20 custom-responsive"
+    >
       {/* Divider Text */}
-      <div data-aos="fade-up" className="text-center">
+      <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
           Osoite
         </h2>
         <div className="w-16 h-1 bg-gray-300 mx-auto mb-8"></div>
       </div>
 
-      {/* Image and Text Layout */}
-      <div className="flex flex-col md:flex-row items-center justify-center md:items-start md:justify-start gap-x-12 px-6 max-w-6xl mx-auto">
-        {/* Image */}
-        <div data-aos="fade-right" className="flex-1 w-full max-w-md">
-          <a
-            href="https://maps.app.goo.gl/9YRj74E5ezTWunFGA"
-            target="_blank"
-            data-aos="fade-right"
-            className="flex-1"
-          >
-            <img
-              src="images/location.png"
-              alt="Parquet"
-              className="w-full max-w-md h-auto rounded-lg shadow-lg"
+      {/* Icon-led map card */}
+      <div className="max-w-md mx-auto rounded-lg border border-white/10 bg-white/5 overflow-hidden">
+        <a href="https://maps.app.goo.gl/9YRj74E5ezTWunFGA" target="_blank">
+          <img
+            src="images/location.png"
+            alt="Kartta Ahmalattiat Oy:n toimipisteeseen, Sysmäläntie 1 Halli 34"
+            className="w-full h-auto"
+          />
+        </a>
+        <div className="p-5 space-y-3">
+          <div className="flex items-center gap-3 text-gray-300">
+            <CursorArrowRaysIcon
+              className="w-5 h-5 text-orange-300 flex-shrink-0"
+              aria-hidden="true"
             />
-          </a>
-        </div>
-
-        {/* Text Content */}
-        <div
-          data-aos="fade-left"
-          className="flex-1 mt-8 md:mt-0 text-start text-gray-300 md:pr-4"
-        >
-          <p className="text-lg leading-relaxed text-center md:text-start">
-            Klikkaa karttaa löytääkseksi toimistollemme
-          </p>
-
-          <p className="text-lg leading-relaxed mt-6 text-center md:text-start">
-            <strong>Sysmäläntie 1 Halli 34</strong>
-          </p>
+            <p>Klikkaa karttaa löytääkseksi toimistollemme</p>
+          </div>
+          <div className="flex items-center gap-3">
+            <MapPinIcon
+              className="w-5 h-5 text-orange-300 flex-shrink-0"
+              aria-hidden="true"
+            />
+            <p className="font-semibold text-white">Sysmäläntie 1 Halli 34</p>
+          </div>
         </div>
       </div>
     </section>
