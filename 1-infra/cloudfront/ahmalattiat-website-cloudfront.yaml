@@ -1,0 +1,192 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: HTTPS delivery of the private Ahmalattiat website through CloudFront OAC and Route 53 aliases.
+Metadata:
+  AWSToolsMetrics:
+    AWSAgentToolkit: aws-cloudformation@3
+  com.aws.cloudformation.Context:
+    must:
+      - Deploy with the bucket stack in eu-north-1 for regional exports and bucket policy.
+      - CertificateArn must identify an issued certificate in us-east-1.
+      - Manage website A/AAAA records only; preserve mail records.
+Parameters:
+  CertificateArn:
+    Type: String
+    Description: Issued us-east-1 certificate supplied from the certificate stack.
+    AllowedPattern: '^arn:aws:acm:us-east-1:[0-9]{12}:certificate/[a-f0-9-]+$'
+  AccessLogsDomainName:
+    Type: String
+    Description: Private ACL-enabled us-east-1 log bucket supplied from the certificate stack.
+    AllowedPattern: '^[a-z0-9.-]+[.]s3[.]amazonaws[.]com$'
+  HostedZoneId:
+    Type: AWS::Route53::HostedZone::Id
+    Default: Z0552439130IVGY8BZH2V
+    Description: Existing public hosted zone for ahmalattiat.fi.
+Resources:
+  OriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: SigV4 origin authentication replaces legacy origin access identity.
+        must:
+          - Always sign requests to the private S3 REST endpoint.
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub '${AWS::StackName}-oac'
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+  WebsiteCachePolicy:
+    Type: AWS::CloudFront::CachePolicy
+    Properties:
+      CachePolicyConfig:
+        Name: !Sub '${AWS::StackName}-cache'
+        MinTTL: 0
+        DefaultTTL: 3600
+        MaxTTL: 31536000
+        ParametersInCacheKeyAndForwardedToOrigin:
+          EnableAcceptEncodingBrotli: true
+          EnableAcceptEncodingGzip: true
+          CookiesConfig:
+            CookieBehavior: none
+          HeadersConfig:
+            HeaderBehavior: none
+          QueryStringsConfig:
+            QueryStringBehavior: none
+  CloudfrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: HTTPS company website; cached GET/HEAD, compressed assets, SPA fallback and private access logs.
+        must:
+          - Aliases must be covered by the supplied ACM certificate.
+          - Use OAC and an empty OriginAccessIdentity, never an S3 website endpoint.
+    Properties:
+      DistributionConfig:
+        Comment: Ahmalattiat company website
+        Aliases: [ahmalattiat.fi, www.ahmalattiat.fi]
+        ViewerCertificate:
+          AcmCertificateArn: !Ref CertificateArn
+          SslSupportMethod: sni-only
+          MinimumProtocolVersion: TLSv1.2_2025
+        HttpVersion: http2and3
+        IPV6Enabled: true
+        Origins:
+          - Id: website-s3
+            DomainName:
+              Fn::ImportValue: ahmalattiat-website-bucket-domain-name
+            OriginAccessControlId: !GetAtt OriginAccessControl.Id
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        Enabled: true
+        DefaultRootObject: index.html
+        CustomErrorResponses:
+          - ErrorCode: 403
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+            ErrorCachingMinTTL: 0
+          - ErrorCode: 404
+            ResponseCode: 200
+            ResponsePagePath: /index.html
+            ErrorCachingMinTTL: 0
+        DefaultCacheBehavior:
+          TargetOriginId: website-s3
+          AllowedMethods: [GET, HEAD]
+          CachedMethods: [GET, HEAD]
+          Compress: true
+          CachePolicyId: !Ref WebsiteCachePolicy
+          ResponseHeadersPolicyId: 67f7725c-6f97-4210-82d7-5512b31e9d03
+          ViewerProtocolPolicy: redirect-to-https
+        Logging:
+          Bucket: !Ref AccessLogsDomainName
+          IncludeCookies: false
+          Prefix: website/
+        PriceClass: PriceClass_100
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Only this CloudFront distribution may read objects; deny insecure bucket access.
+        must:
+          - Scope CloudFront read access to this distribution ARN and account.
+          - Never grant public read access.
+    Properties:
+      Bucket:
+        Fn::ImportValue: ahmalattiat-website-bucket-name
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontRead
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource:
+              Fn::Sub:
+                - 'arn:${AWS::Partition}:s3:::${WebsiteBucket}/*'
+                - WebsiteBucket:
+                    Fn::ImportValue: ahmalattiat-website-bucket-name
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub 'arn:${AWS::Partition}:cloudfront::${AWS::AccountId}:distribution/${CloudfrontDistribution}'
+                AWS:SourceAccount: !Ref AWS::AccountId
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource:
+              - Fn::Sub:
+                  - 'arn:${AWS::Partition}:s3:::${WebsiteBucket}'
+                  - WebsiteBucket:
+                      Fn::ImportValue: ahmalattiat-website-bucket-name
+              - Fn::Sub:
+                  - 'arn:${AWS::Partition}:s3:::${WebsiteBucket}/*'
+                  - WebsiteBucket:
+                      Fn::ImportValue: ahmalattiat-website-bucket-name
+            Condition:
+              Bool:
+                aws:SecureTransport: false
+  WebsiteDNS:
+    Type: AWS::Route53::RecordSetGroup
+    DependsOn: WebsiteBucketPolicy
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: IPv4 and IPv6 aliases for the apex and www in the existing hosted zone.
+        must:
+          - Leave MX, SPF, DKIM, verification, NS and SOA untouched.
+    Properties:
+      HostedZoneId: !Ref HostedZoneId
+      RecordSets:
+        - Name: ahmalattiat.fi.
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt CloudfrontDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+        - Name: ahmalattiat.fi.
+          Type: AAAA
+          AliasTarget:
+            DNSName: !GetAtt CloudfrontDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+        - Name: www.ahmalattiat.fi.
+          Type: A
+          AliasTarget:
+            DNSName: !GetAtt CloudfrontDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+        - Name: www.ahmalattiat.fi.
+          Type: AAAA
+          AliasTarget:
+            DNSName: !GetAtt CloudfrontDistribution.DomainName
+            HostedZoneId: Z2FDTNDATAQYW2
+            EvaluateTargetHealth: false
+Outputs:
+  DistributionId:
+    Description: Distribution to invalidate after website uploads.
+    Value: !Ref CloudfrontDistribution
+  DistributionDomainName:
+    Description: CloudFront endpoint for verification.
+    Value: !GetAtt CloudfrontDistribution.DomainName
+  WebsiteURL:
+    Description: Public company website.
+    Value: https://ahmalattiat.fi

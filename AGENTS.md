@@ -109,11 +109,12 @@ npm run preview -- --host 127.0.0.1
 - The user intentionally accepts website downtime while preparing AWS hosting. Email
   must keep working through Google Workspace; website work must not modify its MX,
   SPF, DKIM, or verification records.
-- Existing `deploy` scripts reference an S3 bucket and CloudFront distribution and
-  recursively delete bucket objects before uploading. These names do not prove they
-  are the intended current infrastructure. Inspect and verify the AWS account, targets,
-  and deployment method before any requested deployment; do not run the legacy deploy
-  script as a build check.
+- Current deployment is documented in `1-infra/README.md`: certificate in us-east-1,
+  private bucket and CloudFront stack in eu-north-1. The initial bucket was imported.
+  `npm run deploy` in `ahma-site/` publishes to `ahmalattiat-website` without deleting
+  older objects and reads the distribution ID from CloudFormation. Deploy only when
+  requested; build/lint checks do not require deployment. Leave legacy Ireland stacks
+  alone unless cleanup is explicitly requested.
 - Keep credentials, backup mail, and private hosting exports out of this repository.
 
 ## Primary references

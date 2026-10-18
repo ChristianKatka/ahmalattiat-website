@@ -1,0 +1,88 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: DNS-validated HTTPS certificate and private access-log storage for the Ahmalattiat CloudFront website.
+Metadata:
+  AWSToolsMetrics:
+    AWSAgentToolkit: aws-cloudformation@3
+  com.aws.cloudformation.Context:
+    must:
+      - Deploy in us-east-1 because CloudFront requires ACM certificates there.
+      - Preserve Google Workspace MX and TXT records in the existing hosted zone.
+Parameters:
+  HostedZoneId:
+    Type: AWS::Route53::HostedZone::Id
+    Default: Z0552439130IVGY8BZH2V
+    Description: Existing public hosted zone for ahmalattiat.fi.
+Resources:
+  WebsiteCertificate:
+    Type: AWS::CertificateManager::Certificate
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: IaC creates and DNS-validates both website names; no manual ARN copying.
+        must:
+          - Retain while referenced by CloudFront in another region.
+          - Preserve validation CNAMEs for automatic renewal.
+    Properties:
+      DomainName: ahmalattiat.fi
+      SubjectAlternativeNames: [www.ahmalattiat.fi]
+      ValidationMethod: DNS
+      DomainValidationOptions:
+        - DomainName: ahmalattiat.fi
+          HostedZoneId: !Ref HostedZoneId
+        - DomainName: www.ahmalattiat.fi
+          HostedZoneId: !Ref HostedZoneId
+  AccessLogsBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Separate private encrypted logs; US East supports CloudFront standard legacy logging.
+        must:
+          - BucketOwnerPreferred allows the log-delivery ACL; never expose logs publicly.
+          - Expire request logs after 30 days.
+    Properties:
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerPreferred
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      LifecycleConfiguration:
+        Rules:
+          - Id: ExpireAccessLogs
+            Status: Enabled
+            ExpirationInDays: 30
+            AbortIncompleteMultipartUpload:
+              DaysAfterInitiation: 7
+  AccessLogsBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref AccessLogsBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: DenyInsecureTransport
+            Effect: Deny
+            Principal: '*'
+            Action: s3:*
+            Resource:
+              - !GetAtt AccessLogsBucket.Arn
+              - !Sub '${AccessLogsBucket.Arn}/*'
+            Condition:
+              Bool:
+                aws:SecureTransport: false
+Outputs:
+  CertificateArn:
+    Description: Issued us-east-1 certificate passed automatically to the distribution stack.
+    Value: !Ref WebsiteCertificate
+  AccessLogsDomainName:
+    Description: US East log bucket endpoint passed automatically to CloudFront.
+    Value: !GetAtt AccessLogsBucket.DomainName

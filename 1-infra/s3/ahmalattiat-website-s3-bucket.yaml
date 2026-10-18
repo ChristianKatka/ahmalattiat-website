@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Private versioned storage for the Ahmalattiat website; CloudFront access is granted by the distribution stack.
+Metadata:
+  AWSToolsMetrics:
+    AWSAgentToolkit: aws-cloudformation@3
+  com.aws.cloudformation.Context:
+    must:
+      - Deploy in the existing bucket region, eu-north-1.
+      - Import the existing bucket on first deployment; do not recreate it.
+Parameters:
+  BucketName:
+    Type: String
+    Default: ahmalattiat-website
+    AllowedValues: [ahmalattiat-website]
+    Description: Company website bucket name required by the owner.
+Resources:
+  AhmalattiatWebsiteS3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Metadata:
+      com.aws.cloudformation.Context:
+        why: Private REST origin; versioning protects releases; no public website endpoint or ACLs.
+        must:
+          - Keep public access blocked and ownership enforced.
+          - Retain the bucket and objects on deletion or replacement.
+    Properties:
+      BucketName: !Ref BucketName
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        IgnorePublicAcls: true
+        BlockPublicPolicy: true
+        RestrictPublicBuckets: true
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+            BucketKeyEnabled: false
+      VersioningConfiguration:
+        Status: Enabled
+Outputs:
+  BucketName:
+    Description: Private website bucket.
+    Value: !Ref AhmalattiatWebsiteS3Bucket
+    Export:
+      Name: ahmalattiat-website-bucket-name
+  BucketRegionalDomainName:
+    Description: Regional S3 REST endpoint for CloudFront.
+    Value: !GetAtt AhmalattiatWebsiteS3Bucket.RegionalDomainName
+    Export:
+      Name: ahmalattiat-website-bucket-domain-name

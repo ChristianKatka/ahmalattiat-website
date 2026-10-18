@@ -1,0 +1,7 @@
+[
+  {
+    "ResourceType": "AWS::S3::Bucket",
+    "LogicalResourceId": "AhmalattiatWebsiteS3Bucket",
+    "ResourceIdentifier": {"BucketName": "ahmalattiat-website"}
+  }
+]
